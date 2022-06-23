@@ -1,0 +1,16 @@
+Applications:
+  test1:
+    components:
+      - /Test
+  test2:
+    devices:
+      - jupiter.acme.com
+      - zeus.acme.be
+    systems:
+      - /Infrastructure/Network
+  test3:
+    groups:
+      - /Development
+  test4:
+    systems:
+      - /Infrastructure/Network
