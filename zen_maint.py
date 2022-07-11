@@ -65,6 +65,11 @@ def duration_format(duration):
         duration_days = '0'
         duration_hours = '00'
         duration_mins = '{:0>2}'.format(duration_mins)
+    elif re.match(r'\d+d$', duration):
+        r = re.match(r'(\d+)d$', duration)
+        duration_days = r.group(1)
+        duration_hours = '00'
+        duration_mins = '00'
     else:
         print('Format of duration is not recognized: {}'.format(duration))
         exit(1)
@@ -148,7 +153,7 @@ def clean_maint_windows(routers, uid, org_name, org_type):
                 }
             response = dm_router.callMethod('editMaintWindow', params=params)
             if not response['result']['success']:
-                print('Could not disable maintenance window {} on {}} {}.'.format(maint_window['name'], org_type,
+                print('Could not disable maintenance window {} on {} {}.'.format(maint_window['name'], org_type,
                                                                                   org_name))
             else:
                 print('Disabled maintenance window {} on {} {}.'.format(maint_window['name'], org_type, org_name))
